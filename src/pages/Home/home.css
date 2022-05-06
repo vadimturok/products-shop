@@ -1,9 +1,11 @@
 .home {
    display: flex;
+   justify-content: space-between;
 }
-.homeSidebar {
-   width: 25%;
-}
-.homeProductList {
-   width: 75%;
-}
+/*.homeSidebar {*/
+/*   width: 25%;*/
+/*}*/
+/*.homeProductList {*/
+/*   width: 75%;*/
+/*   margin-left: 10px;*/
+/*}*/

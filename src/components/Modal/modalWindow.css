@@ -1,0 +1,27 @@
+.modalWindow {
+}
+.modalWindowItem {
+   display: flex;
+   gap: 10px;
+}
+.modalWindowItemImg {
+   width: 100px;
+   height: 100px;
+   object-fit: contain;
+}
+.modalWindowItemPrice {
+   color: black;
+}
+.modalWindowSpan {
+   height: 1px;
+   left: 100%;
+   background-color: lightgray;
+}
+.modalWindowCountNumber {
+   font-size: 20px;
+}
+.modalWindowCount {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+}

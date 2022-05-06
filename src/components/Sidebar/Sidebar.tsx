@@ -1,28 +1,46 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import './sidebar.css'
 import TextField from '@mui/material/TextField'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import InputLabel from '@mui/material/InputLabel'
-import { Slider } from '@mui/material'
-import { IProduct } from '../../types'
+import { Alert, Slider } from '@mui/material'
+import { useAppDispatch, useAppSelector } from '../../hooks'
+import {
+   filterByCategory,
+   filterByPrice,
+   searchFilter,
+} from '../../store/products/products.slice'
 import { findMaxPrice } from '../../utils'
 
-const Sidebar: FC<{ products: IProduct[] }> = ({ products }) => {
-   const [age, setAge] = React.useState('')
-   const [value, setValue] = React.useState([0, 200])
+const Sidebar: FC = () => {
+   const { products } = useAppSelector((state) => state.productsReducer)
+   const dispatch = useAppDispatch()
+   const [searchTerm, setSearchTerm] = useState('')
+   const [category, setCategory] = React.useState('')
+   const [value, setValue] = React.useState([0, 0])
 
    const handleChange = (event: SelectChangeEvent) => {
-      setAge(event.target.value)
+      setCategory(event.target.value)
+      dispatch(filterByCategory(event.target.value))
    }
 
    const changePrice = (event: Event, newValue: number | number[]) => {
       setValue(newValue as number[])
+      dispatch(filterByPrice(newValue as number[]))
+   }
+
+   const onChangeSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setSearchTerm(event.target.value)
+      dispatch(searchFilter(event.target.value))
    }
 
    return (
       <div className={'sidebar'}>
+         <Alert variant="filled" severity="info">
+            Try custom product filtering
+         </Alert>
          <div className={'searchInput'}>
             <TextField
                fullWidth={true}
@@ -30,6 +48,8 @@ const Sidebar: FC<{ products: IProduct[] }> = ({ products }) => {
                label="Search product"
                type="search"
                variant="standard"
+               value={searchTerm}
+               onChange={onChangeSearch}
             />
          </div>
          <div className={'selectCategory'}>
@@ -40,15 +60,17 @@ const Sidebar: FC<{ products: IProduct[] }> = ({ products }) => {
                <Select
                   labelId="demo-simple-select-standard-label"
                   id="demo-simple-select-standard"
-                  value={age}
+                  value={category}
                   onChange={handleChange}
                   label="Select category"
                >
-                  <MenuItem value={0}>
-                     <em>All</em>
+                  <MenuItem value={'All'}>
+                     <em>All categories</em>
                   </MenuItem>
-                  <MenuItem value={10}>Electronics</MenuItem>
-                  <MenuItem value={20}>Jewelery</MenuItem>
+                  <MenuItem value={'electronics'}>Electronics</MenuItem>
+                  <MenuItem value={'jewelery'}>Jewelery</MenuItem>
+                  <MenuItem value={"men's clothing"}>Men clothing</MenuItem>
+                  <MenuItem value={"women's clothing"}>Woman clothing</MenuItem>
                </Select>
             </FormControl>
          </div>
@@ -60,8 +82,12 @@ const Sidebar: FC<{ products: IProduct[] }> = ({ products }) => {
                onChange={changePrice}
                valueLabelDisplay="auto"
                min={0}
-               max={findMaxPrice(products)}
+               max={products.length !== 0 ? findMaxPrice(products) : 0}
             />
+            <div className={'selectPriceValues'}>
+               <span>{value[0]} $</span>
+               <span>{value[1]} $</span>
+            </div>
          </div>
       </div>
    )

@@ -7,6 +7,15 @@
    box-shadow: 4px 4px 8px 0 rgba(34, 60, 80, 0.2);
    border: 1px solid lightgray;
 }
+.productItemRate {
+   display: flex;
+   gap: 5px;
+   align-items: center;
+}
+.productItemRateCount {
+   color: gray;
+   font-size: 15px;
+}
 .productTop {
    padding: 10px;
 }

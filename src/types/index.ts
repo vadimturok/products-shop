@@ -11,6 +11,11 @@ export interface IProduct {
    }
 }
 
+export interface CartItem {
+   product: IProduct
+   quantity: number
+}
+
 export enum ProductsFilter {
    FILTER_BY_CATEGORY = 'FILTER_BY_CATEGORY',
    FILTER_BY_PRICE = 'FILTER_BY_PRICE',
