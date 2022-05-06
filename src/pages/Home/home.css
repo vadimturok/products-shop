@@ -1,0 +1,9 @@
+.home {
+   display: flex;
+}
+.homeSidebar {
+   width: 25%;
+}
+.homeProductList {
+   width: 75%;
+}
