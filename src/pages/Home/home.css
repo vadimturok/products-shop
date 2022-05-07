@@ -1,11 +1,4 @@
 .home {
    display: flex;
-   justify-content: space-between;
+   gap: 30px;
 }
-/*.homeSidebar {*/
-/*   width: 25%;*/
-/*}*/
-/*.homeProductList {*/
-/*   width: 75%;*/
-/*   margin-left: 10px;*/
-/*}*/

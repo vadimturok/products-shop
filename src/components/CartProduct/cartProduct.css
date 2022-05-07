@@ -1,0 +1,40 @@
+.cartItem {
+   display: flex;
+   justify-content: space-between;
+   width: 100%;
+}
+.cartItemImg {
+   width: 100px;
+   height: 100px;
+   object-fit: contain;
+}
+
+.cartItemImgWrapper {
+}
+
+.cartItemInfo {
+   display: flex;
+   gap: 10px;
+}
+
+.cartItemDescription {
+   flex: 3;
+   display: flex;
+   flex-direction: column;
+   gap: 5px;
+}
+
+.cartItemCount {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+}
+
+.cartItemRemove {
+   margin-top: 20px;
+}
+
+.cartItemCountNumber {
+   color: gray;
+   font-size: 20px;
+}

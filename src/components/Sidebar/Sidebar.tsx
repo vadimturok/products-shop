@@ -38,8 +38,8 @@ const Sidebar: FC = () => {
 
    return (
       <div className={'sidebar'}>
-         <Alert variant="filled" severity="info">
-            Try custom product filtering
+         <Alert icon={false} variant="filled" severity="info">
+            Custom product filtering
          </Alert>
          <div className={'searchInput'}>
             <TextField

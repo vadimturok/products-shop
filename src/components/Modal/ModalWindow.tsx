@@ -2,13 +2,14 @@ import React, { FC, useState } from 'react'
 import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
-import DialogContentText from '@mui/material/DialogContentText'
 import DialogTitle from '@mui/material/DialogTitle'
-import { Button, ButtonGroup } from '@mui/material'
+import { Button, ButtonGroup, Typography } from '@mui/material'
 import RemoveIcon from '@mui/icons-material/Remove'
 import AddIcon from '@mui/icons-material/Add'
 import { IProduct } from '../../types'
 import './modalWindow.css'
+import { useAppDispatch } from '../../hooks'
+import { addProduct, toggleItemAdded } from '../../store/cart/cart.slice'
 
 interface ModalWindowProps {
    open: boolean
@@ -17,8 +18,14 @@ interface ModalWindowProps {
 }
 
 const ModalWindow: FC<ModalWindowProps> = ({ setOpen, open, product }) => {
+   const dispatch = useAppDispatch()
    const [count, setCount] = useState(1)
    const handleClose = () => {
+      setOpen(false)
+   }
+   const addToCart = () => {
+      dispatch(addProduct({ product, quantity: count }))
+      dispatch(toggleItemAdded(true))
       setOpen(false)
    }
    const increase = () => {
@@ -44,7 +51,7 @@ const ModalWindow: FC<ModalWindowProps> = ({ setOpen, open, product }) => {
             </DialogTitle>
             <span className={'modalWindowSpan'} />
             <DialogContent>
-               <DialogContentText id="alert-dialog-description">
+               <Typography component={'div'} id="alert-dialog-description">
                   <div className={'modalWindowItem'}>
                      <img
                         className={'modalWindowItemImg'}
@@ -65,16 +72,17 @@ const ModalWindow: FC<ModalWindowProps> = ({ setOpen, open, product }) => {
                                  <AddIcon fontSize="small" />
                               </Button>
                            </ButtonGroup>
-                           <span className={'modalWindowCountNumber'}>
+                           <div className={'modalWindowCountNumber'}>
                               {count}
-                           </span>
+                           </div>
                         </div>
                      </div>
                   </div>
-               </DialogContentText>
+               </Typography>
             </DialogContent>
+            <span className={'modalWindowSpan'} />
             <DialogActions>
-               <Button onClick={handleClose}>Agree</Button>
+               <Button onClick={addToCart}>Agree</Button>
                <Button onClick={handleClose}>Cancel</Button>
             </DialogActions>
          </Dialog>

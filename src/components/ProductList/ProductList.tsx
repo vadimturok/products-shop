@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import './productList.css'
 import ProductItem from '../ProductItem/ProductItem'
 import { useAppSelector } from '../../hooks'
-import Loader from '../Loader/Loader'
+import { Skeleton } from '@mui/material'
 
 const ProductList: FC = () => {
    const { isLoading, filteredProducts } = useAppSelector(
@@ -10,15 +10,25 @@ const ProductList: FC = () => {
    )
    return (
       <div className={'productList'}>
-         <div className={'productListItems'}>
-            {isLoading ? (
-               <Loader />
-            ) : (
-               filteredProducts.map((product) => (
+         {isLoading ? (
+            <div className={'productListItems'}>
+               {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+                  <Skeleton
+                     key={i}
+                     variant="rectangular"
+                     width={250}
+                     height={420}
+                     sx={{ borderRadius: '5px', marginBottom: '20px' }}
+                  />
+               ))}
+            </div>
+         ) : (
+            <div className={'productListItems'}>
+               {filteredProducts.map((product) => (
                   <ProductItem key={product.id} product={product} />
-               ))
-            )}
-         </div>
+               ))}
+            </div>
+         )}
       </div>
    )
 }
