@@ -2,3 +2,6 @@
    display: flex;
    gap: 30px;
 }
+.homeProductList{
+   margin-bottom: 20px;
+}
