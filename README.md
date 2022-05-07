@@ -1,6 +1,6 @@
 # 🏪Products shop
 > E-commerce project using React and TypeScript.
-> Live demo [_here_](https://deploy-nest-react-blog-app.herokuapp.com/). <!-- If you have the project hosted somewhere, include the link here. -->
+> Live demo [_here_](https://vadimturok.github.io/products-shop/#/). <!-- If you have the project hosted somewhere, include the link here. -->
 
 ## Table of Contents
 * [General Info](#general-information)
