@@ -15,7 +15,7 @@
 
 ## General Information
 Product shop with different types of products. Wide range of filtering items and searching functionlity.
-Linting and formatting code is provided by custom configutation using Webpack.
+Linting and formatting code is provided by custom configuration using Webpack.
 
 
 ## Technologies Used
