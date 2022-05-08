@@ -1,6 +1,6 @@
 # 🏪Products shop
 > E-commerce project using React and TypeScript.
-> Live demo [_here_](https://vadimturok.github.io/products-shop/#/). <!-- If you have the project hosted somewhere, include the link here. -->
+> Live demo [_here_](https://vadimturok.github.io/products-shop/#/).
 
 ## Table of Contents
 * [General Info](#general-information)
@@ -14,7 +14,7 @@
 
 
 ## General Information
-Product shop with different types of products. Wide range of filtering items and searching functionlity.
+Product shop with different types of products. Wide range of filtering items and searching functionality.
 Linting and formatting code is provided by custom configuration using Webpack.
 
 
@@ -32,11 +32,11 @@ Linting and formatting code is provided by custom configuration using Webpack.
 
 ## Features
 Main features of the app:
-- Search products by name
-- Filter products by categories
+- Searching products by name
+- Filtering products by categories
 - Selecting range of price
 - Skeleton loading screens
-- Visiting product page
+- Product page
 - Adding products to cart
 - Dialog windows for submitting or canceling user's actions
 - Increasing, decreasing count of product with auto calculating total sum of order
@@ -48,7 +48,6 @@ Main features of the app:
 <img src="./demo/demo_1.png" width="800" title="hover text">
 <img src="./demo/demo_2.png" width="800" title="hover text">
 <img src="./demo/demo_3.png" width="800" title="hover text">
-<!-- If you have screenshots you'd like to share, include them here. -->
 
 
 ## Setup
