@@ -9,15 +9,20 @@ import {
 import React, { useState } from 'react'
 import './cart.css'
 import { useAppDispatch, useAppSelector } from '../../hooks'
-import { clearCart, toggleCart } from '../../store/cart/cart.slice'
+import {
+   clearCart,
+   toggleCart,
+   toggleItemRemoved,
+} from '../../store/cart/cart.slice'
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket'
 import CartProduct from '../CartProduct/CartProduct'
 import DialogTitle from '@mui/material/DialogTitle'
 import DialogActions from '@mui/material/DialogActions'
 import { useNavigate } from 'react-router-dom'
+import AlertComponent from '../Alert/AlertComponent'
 
 const Cart = () => {
-   const { isOpen, cartItems, isEmpty, totalSum } = useAppSelector(
+   const { isOpen, cartItems, isEmpty, totalSum, itemRemoved } = useAppSelector(
       (state) => state.cartReducer
    )
    const navigate = useNavigate()
@@ -62,6 +67,12 @@ const Cart = () => {
             open={isOpen}
          >
             <Box sx={{ width: 400, paddingTop: 2 }}>
+               <AlertComponent
+                  open={itemRemoved}
+                  setOpen={() => dispatch(toggleItemRemoved(false))}
+                  text={'Successfully removed product!'}
+                  severity={'info'}
+               />
                <div className={'cartHeader'}>
                   <h1 className={'cartTitle'}>Your cart</h1>
                   <ShoppingBasketIcon className={'cartIcon'} />

@@ -1,15 +1,18 @@
 import React, { FC, useState } from 'react'
 import './product.css'
 import { useParams } from 'react-router-dom'
-import { useAppSelector } from '../../hooks'
+import { useAppDispatch, useAppSelector } from '../../hooks'
 import { Button, Chip, Rating, Skeleton, Typography } from '@mui/material'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart'
 import ModalWindow from '../../components/Modal/ModalWindow'
+import { toggleItemAdded } from '../../store/cart/cart.slice'
+import AlertComponent from '../../components/Alert/AlertComponent'
 
 const Product: FC = () => {
    const { productId } = useParams()
    const { products } = useAppSelector((state) => state.productsReducer)
-   const { cartItems } = useAppSelector((state) => state.cartReducer)
+   const { cartItems, itemAdded } = useAppSelector((state) => state.cartReducer)
+   const dispatch = useAppDispatch()
    const product = products.filter(
       (product) => product.id === Number(productId)
    )[0]
@@ -21,6 +24,12 @@ const Product: FC = () => {
    if (product) {
       return (
          <div className={'product'}>
+            <AlertComponent
+               open={itemAdded}
+               setOpen={() => dispatch(toggleItemAdded(false))}
+               severity={'success'}
+               text={'Successfully added to cart!'}
+            />
             <ModalWindow product={product} open={open} setOpen={setOpen} />
             <div className="productWrapper">
                <div className="productImage">

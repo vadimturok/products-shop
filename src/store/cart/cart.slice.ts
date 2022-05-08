@@ -7,6 +7,7 @@ interface CartState {
    isEmpty: boolean
    totalSum: number
    itemAdded: boolean
+   itemRemoved: boolean
 }
 const initialState: CartState = {
    cartItems: [],
@@ -14,6 +15,7 @@ const initialState: CartState = {
    isEmpty: true,
    totalSum: 0,
    itemAdded: false,
+   itemRemoved: false,
 }
 
 export const cartSlice = createSlice({
@@ -67,6 +69,9 @@ export const cartSlice = createSlice({
       toggleItemAdded(state, action: PayloadAction<boolean>) {
          state.itemAdded = action.payload
       },
+      toggleItemRemoved(state, action: PayloadAction<boolean>) {
+         state.itemRemoved = action.payload
+      },
    },
 })
 
@@ -74,6 +79,7 @@ export const {
    addProduct,
    toggleCart,
    toggleItemAdded,
+   toggleItemRemoved,
    removeProduct,
    increaseCount,
    decreaseCount,

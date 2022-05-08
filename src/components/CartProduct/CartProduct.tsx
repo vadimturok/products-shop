@@ -10,6 +10,7 @@ import {
    decreaseCount,
    increaseCount,
    removeProduct,
+   toggleItemRemoved,
 } from '../../store/cart/cart.slice'
 
 interface CartItemProps {
@@ -21,6 +22,7 @@ const CartProduct: FC<CartItemProps> = ({ product }) => {
    const dispatch = useAppDispatch()
    const handleRemove = () => {
       dispatch(removeProduct(product))
+      dispatch(toggleItemRemoved(true))
    }
    const increase = () => {
       setCount((count) => count + 1)
