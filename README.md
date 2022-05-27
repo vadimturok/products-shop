@@ -1,5 +1,5 @@
 # 🏪Products shop
-> E-commerce project using React and TypeScript.
+> E-commerce project built with React and TypeScript.
 > Live demo [_here_](https://vadimturok.github.io/products-shop/#/).
 
 > API used for this project [_here_](https://fakestoreapi.com/).
